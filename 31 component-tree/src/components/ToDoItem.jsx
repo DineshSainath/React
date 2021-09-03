@@ -1,20 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 
 function ToDoItem(props) {
-  const [isStrike, setStrike] = useState(false);
-
-  function strikeItem(event) {
-    setStrike((prevValue) => !prevValue);
+  function handleClick() {
+    props.action(props.id);
   }
 
   return (
     <div>
-      <li
-        onClick={strikeItem}
-        style={{ textDecoration: isStrike ? "line-through" : "none" }}
-      >
-        {props.text}
-      </li>
+      <li onClick={handleClick}>{props.text}</li>
     </div>
   );
 }
